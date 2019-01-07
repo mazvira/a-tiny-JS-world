@@ -47,7 +47,7 @@ const man = {
 };
 
 function printInhabitants(obj){
-    return Object.values(obj).join(" - ");
+    return [obj.species, obj.name, obj.gender, obj.legs, obj.hands, obj.saying, obj.friends].join(" - ");
 }
 
 // ======== OUTPUT ========
