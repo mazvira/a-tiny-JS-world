@@ -6,53 +6,63 @@
    */
 
 // ======== OBJECTS DEFINITIONS ========
-const dog = {
-    species: 'dog',
-    name: 'Toby',
-    gender: 'male',
-    legs: 4,
-    hands: 0,
-    saying: 'woof-woof!',
-    friends : ["Tom", "Olena", "Sergejs"]
-};
-
-const cat = {
-    species: 'cat',
-    name: 'Tom',
-    gender: 'male',
-    legs: 4,
-    hands: 0,
-    saying: 'meow!',
-    friends : ["Toby", "Olena", "Sergejs"],
-};
-
-const woman = {
-    species: 'human',
-    name: 'Olena',
-    gender: 'female',
-    legs: 2,
-    hands: 2,
-    saying: 'Hello world!',
-    friends : ["Toby", "Tom", "Sergejs"]
-};
-
-const man = {
-    species: 'human',
-    name: 'Sergejs',
-    gender: 'male',
-    legs: 2,
-    hands: 2,
-    saying: 'Hello world!',
-    friends : ["Toby", "Tom", "Olena"]
-};
-
-function printInhabitants(obj){
-    return [obj.species, obj.name, obj.gender, obj.legs, obj.hands, obj.saying, obj.friends].join(" - ");
+var Inhabitant = function (species, name, gender, legs, hands, saying, friends) {
+    this.species = species;
+    this.name = name;
+    this.gender = gender;
+    this.legs = legs;
+    this.hands = hands;
+    this.saying = saying;
+    this.friends = friends;
 }
+
+Inhabitant.prototype.printInhabitants =  function() {
+    return [this.species, this.name, this.gender, this.legs, this.hands, this.saying, this.friends].join(" - ");
+}
+
+var Human = function(name, gender, saying, friends){
+    var inhabitant = new Inhabitant('human', name, gender, 2, 2, saying, friends);
+    return inhabitant;
+}
+
+var Dog = function(name, gender, saying, friends){
+    var inhabitant = new Inhabitant('dog', name, gender, 4, 0, saying, friends);
+    return inhabitant;
+}
+
+var Cat = function(name, gender, saying, friends){
+    var inhabitant = new Inhabitant('cat', name, gender, 4, 0, saying, friends);
+    return inhabitant;
+}
+
+var name = 'Toby';
+var gender = 'male';
+var saying = 'woof-woof!';
+var friends = ["Tom", "Olena", "Sergejs"];
+
+var dog = new Dog(name, gender, saying, friends);
+
+name = 'Tom';
+gender = 'male';
+saying = 'meow!';
+friends = ["Toby", "Olena", "Sergejs"];
+
+var cat = new Cat(name, gender, saying, friends);
+
+name = 'Olena';
+gender = 'female';
+saying = 'Hello world!';
+friends = ["Toby", "Tom", "Sergejs"];
+
+var woman = new Human(name, gender, saying, friends);
+
+name = 'Sergejs';
+gender = 'male';
+saying = 'Hello world!';
+friends = ["Toby", "Tom", "Olena"];
+
+var man = new Human(name, gender, saying, friends);
 
 // ======== OUTPUT ========
 var inhabitants = [dog, cat, woman, man];
-inhabitants.forEach(item =>(print(printInhabitants(item))));
-
-
-
+inhabitants.forEach(item =>(print(item.printInhabitants())));
