@@ -85,5 +85,6 @@ friends = ["Toby", "Tom", "Olena"];
 var man = new Human(name, gender, saying, friends);
 
 // ======== OUTPUT ========
+
 var inhabitants = [dog, cat, woman, man];
 inhabitants.forEach(item =>(print(item.printInhabitants())));
